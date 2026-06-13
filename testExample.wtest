@@ -1,9 +1,33 @@
-import example.pepita
+import personas.*
+import regiones.*
+import planeta.*
 
-describe "group of tests for pepita" {
+describe "group of tests for planetas" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+    const p1 = new Persona(edad=20,monedas=41)
+    const p2 = new Persona(edad=27,monedas=33)
+    const p3 = new Persona(edad=77,monedas=77)
+    const p4 = new Persona(edad=15,monedas=13)
+    const p5 = new Persona(edad=19,monedas=0)
+    const c1 = new Muralla(longitud=11)
+    const c2 = new Muralla(longitud=15)
+    const c3 = new Museo(superficie=10,indiceImportancia=13)
+    const c4 = new Museo(superficie=15,indiceImportancia=3)
+    const pepe = new Planeta(habitantes=[p1,p2,p3,p4], construcciones=[c1,c2,c3])
+
+    const jose = new Planeta(habitantes=[p2,p5], construcciones=[c2,c4])
+  test "La delegación está formada por 3 pesonas."{
+    assert.equals(3, pepe.delegacionDiplomatica().size())
+  }
+  test "El planeta Pepe es valioso"{
+    assert.that(pepe.esValioso())
+  }
+  test "Si p2 gasta 20 monedas, ahora la delegación está formada por 2 personas"{
+    p2.gastarMonedas(20)
+    assert.equals(2, pepe.delegacionDiplomatica().size())
+  }
+  test "El planeta Jose no es valioso"{
+    assert.notThat(jose.esValioso())
   }
 
 }
