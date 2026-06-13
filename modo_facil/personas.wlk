@@ -41,7 +41,8 @@ class Productor inherits Persona{
 class Constructor inherits Persona{
     var cantConstRealizadas
     var region
-
+    var property inteligencia = 50
+    
     override method recursos() = super() + (10*cantConstRealizadas)
     override method esDestacado() = cantConstRealizadas>5
 
